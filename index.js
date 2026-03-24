@@ -178,7 +178,7 @@ async function callHyperWorker({ artistId, metric, periodStart, periodEnd, base6
 
 async function callTrackWorker({ artistId, trackId, screenType, metricKey, periodStart, periodEnd, base64, mimeType }) {
   const snapshotDate = new Date().toISOString().slice(0, 10);
-  const res = await fetch(`${SUPABASE_URL}/functions/v1/track-screenshot-worker`, {
+  const res = await fetch(`${SUPABASE_URL}/functions/v1/smooth-function`, {
     method: 'POST',
     headers: {
       'Content-Type':  'application/json',
