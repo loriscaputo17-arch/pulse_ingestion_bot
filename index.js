@@ -200,7 +200,11 @@ async function callTrackWorker({ artistId, trackId, screenType, metricKey, perio
       }],
     }),
   });
-  return res.json();
+  const text = await res.text();
+  console.log('smooth-function status:', res.status);
+  console.log('smooth-function response:', text.slice(0, 300));
+  try { return JSON.parse(text); }
+  catch { return { error: `Edge function error: ${text.slice(0, 200)}` }; }
 }
 
 /* ─── Main handler ───────────────────────────────────────────────────────────── */
